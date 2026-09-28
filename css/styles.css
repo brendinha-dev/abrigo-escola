@@ -530,3 +530,19 @@ input[type="tel"]:not(:placeholder-shown):valid {
   font-size: var(--fonte-xs);
   margin-top: 4px;
 }
+
+
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+  padding: var(--espaco-2);
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 0;
+}

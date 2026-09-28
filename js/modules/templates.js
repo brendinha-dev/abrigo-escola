@@ -82,25 +82,34 @@ export function templateCadastro() {
         <fieldset>
           <legend>Dados Pessoais</legend>
           <label for="nome">Nome completo:</label>
-          <input type="text" id="nome" name="nome" placeholder="Digite aqui" required>
+          <input type="text" id="nome" name="nome" placeholder="Digite aqui"
+                 aria-required="true" aria-describedby="nome-erro" required>
 
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" placeholder="Digite aqui" required>
+          <input type="email" id="email" name="email" placeholder="Digite aqui"
+                 aria-required="true" aria-describedby="email-erro" required>
 
           <label for="nascimento">Data de nascimento:</label>
-          <input type="date" id="nascimento" name="nascimento" required>
+          <input type="date" id="nascimento" name="nascimento"
+                 aria-required="true" required>
 
           <label for="cpf">CPF:</label>
-          <input type="text" id="cpf" name="cpf" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}" placeholder="000.000.000-00" title="Formato: 000.000.000-00" required>
+          <input type="text" id="cpf" name="cpf" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}"
+                 placeholder="000.000.000-00" title="Formato: 000.000.000-00"
+                 aria-required="true" aria-describedby="cpf-erro" required>
 
           <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" name="telefone" pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}" placeholder="(00) 00000-0000" title="Formato: (00) 00000-0000" required>
+          <input type="tel" id="telefone" name="telefone" pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}"
+                 placeholder="(00) 00000-0000" title="Formato: (00) 00000-0000"
+                 aria-required="true" aria-describedby="telefone-erro" required>
         </fieldset>
 
         <fieldset>
           <legend>Endereço</legend>
           <label for="cep">CEP:</label>
-          <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}" placeholder="00000-000" title="Formato: 00000-000" required>
+          <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}"
+                 placeholder="00000-000" title="Formato: 00000-000"
+                 aria-required="true" aria-describedby="cep-erro" required>
 
           <label for="cidade">Cidade:</label>
           <input type="text" id="cidade" name="cidade" placeholder="Digite aqui" required>

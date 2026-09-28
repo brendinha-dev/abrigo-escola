@@ -8,27 +8,28 @@
     
 </head>
 <body>
+  <a href="#app" class="skip-link">Pular para o conteúdo principal</a>
 
-    <header>
-        <img src="../img/logo.jpg" alt="Logotipo do Instituto Esdras Andrade" width="120">
-        
-       <nav>
-        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
-        <label for="menu-toggle" class="menu-toggle-label" aria-label="Abrir menu de navegação">
-         <span></span><span></span><span></span>
-        </label>
+  <header>
+    <img src="../img/logo.jpg" alt="Logotipo do Instituto Esdras Andrade" width="120">
 
-       <ul class="menu">
+    <nav aria-label="Navegação principal">
+      <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+      <label for="menu-toggle" class="menu-toggle-label" aria-label="Abrir menu de navegação">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="menu">
         <li><a href="#/">Início</a></li>
         <li><a href="#/projetos">Projetos</a></li>
         <li><a href="#/cadastro">Cadastre-se</a></li>
-       </ul>
-       </nav>
-    </header>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-  <div id="app"></div>
-</main>
+  <main>
+    <div id="app" role="main" aria-live="polite"></div>
+  </main>
+  ...
 
     <footer>
         <h2>Contato</h2>
