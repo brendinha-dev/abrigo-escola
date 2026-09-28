@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se — Instituto Esdras Andrade</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <header>
+        <img src="../img/logo.jpg" alt="Logotipo do Instituto Esdras Andrade" width="120">
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Cadastre-se Como Voluntário ou Doador</h1>
+        <p>Preencha o formulário abaixo para fazer parte da nossa rede de apoio.</p>
+
+        <form action="#" method="post">
+
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <label for="nome">Nome completo:</label>
+                <input type="text" id="nome" name="nome" required
+                       placeholder="Digite aqui">
+                       
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required
+                       placeholder="Digite aqui">
+
+                <label for="nascimento">Data de nascimento:</label>
+                <input type="date" id="nascimento" name="nascimento" required
+                       placeholder="[0-9]{2}\.[0-9]{2}\.[0-9]{4}">
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" 
+                       pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" 
+                       placeholder="000.000.000-00" 
+                       title="Formato esperado: 000.000.000-00" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" 
+                       pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" 
+                       placeholder="(00) 00000-0000" 
+                       title="Formato esperado: (00) 00000-0000" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Endereço</legend>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" 
+                       pattern="[0-9]{5}-[0-9]{3}" 
+                       placeholder="00000-000" 
+                       title="Formato esperado: 00000-000" required>
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required
+                       placeholder="Digite aqui">
+
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="">Selecione</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="MG">Minas Gerais</option>
+                    <!-- demais estados podem ser adicionados aqui -->
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Área de Interesse</legend>
+
+           
+                 <div class="radio-group">
+                  <p>Deseja se cadastrar como:</p>
+                  <input type="radio" id="voluntario" name="interesse" value="voluntario" required>
+                  <label for="voluntario">Voluntário</label>
+                 </div>
+
+                 <div class="radio-group">
+                  <input type="radio" id="doador" name="interesse" value="doador">
+                  <label for="doador">Doador</label>
+                 </div>
+            
+
+                 <div class="radio-group">
+                  <label for="observacoes">Observações (opcional):</label>
+                  <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                </div>
+
+            </fieldset>
+
+            <button type="submit">Enviar Cadastro</button>
+        </form>
+    </main>
+
+    <footer>
+        <h2>Contato</h2>
+        <address>
+            <p>E-mail: <a href="mailto:projeto.abrigoescola@gmail.com">projeto.abrigoescola@gmail.com</a></p>
+            <p>Telefone: <a href="tel:+5512996620077">(12) 99662-0077</a></p>
+            <p>Endereço: Rua dos Canários, 31 — Vila Tatetuba, São José dos Campos, SP</p>
+        </address>
+    </footer>
+
+</body>
+</html>

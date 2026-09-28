@@ -1,0 +1,532 @@
+:root {
+  /* ===== CORES PRIMÁRIAS (âmbar / amarelo) ===== */
+  --cor-primaria: #f5b800;         /* fundos de destaque, botões */
+  --cor-primaria-escura: #9A6700;  /* textos e links sobre fundo claro */
+  --cor-primaria-clara: #FFF4D6;   /* fundos suaves de seção */
+
+  /* ===== CORES SECUNDÁRIAS (verde petróleo) ===== */
+  --cor-secundaria: #1F6F5C;
+  --cor-secundaria-escura: #14483C;
+
+  /* ===== NEUTROS ===== */
+  --cor-texto: #1C1B19;            /* texto principal */
+  --cor-texto-suave: #5A5750;      /* textos de apoio */
+  --cor-borda: #E0DCD3;
+  --cor-fundo: #FFFDF8;            /* branco levemente quente */
+  --cor-fundo-alt: #F5F1E8;
+
+  /* ===== ESTADOS ===== */
+  --cor-erro: #B3261E;
+  --cor-sucesso: #1E7D45;
+
+  /* ===== TIPOGRAFIA (escala 1.25) ===== */
+  --fonte-xs: 0.875rem;  /* 14px - legendas */
+  --fonte-sm: 1rem;      /* 16px - corpo de texto */
+  --fonte-md: 1.25rem;   /* 20px - h3 */
+  --fonte-lg: 1.75rem;   /* 28px - h2 */
+  --fonte-xl: 2.5rem;    /* 40px - h1 */
+
+  /* ===== ESPAÇAMENTOS (base 8px) ===== */
+  --espaco-1: 0.5rem;   /* 8px  */
+  --espaco-2: 1rem;     /* 16px */
+  --espaco-3: 1.5rem;   /* 24px */
+  --espaco-4: 2rem;     /* 32px */
+  --espaco-5: 3rem;     /* 48px */
+  --espaco-6: 4rem;     /* 64px */
+}
+
+
+
+
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== ESTILOS BASE ===== */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: var(--fonte-sm);
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+h1 {
+  font-size: var(--fonte-xl);
+  color: var(--cor-secundaria-escura);
+  margin-bottom: var(--espaco-3);
+}
+
+h2 {
+  font-size: var(--fonte-lg);
+  color: var(--cor-secundaria);
+  margin-bottom: var(--espaco-2);
+}
+
+h3 {
+  font-size: var(--fonte-md);
+  margin-bottom: var(--espaco-2);
+}
+
+p {
+  margin-bottom: var(--espaco-2);
+  max-width: 70ch;
+}
+
+a {
+  color: var(--cor-primaria-escura);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--cor-secundaria);
+}
+
+
+
+
+/* ===== SISTEMA DE GRID (12 colunas) ===== */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--espaco-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-3);
+}
+
+/* classes utilitárias de largura (quantas colunas ocupar) */
+.col-12 { grid-column: span 12; }
+.col-8  { grid-column: span 8; }
+.col-6  { grid-column: span 6; }
+.col-4  { grid-column: span 4; }
+.col-3  { grid-column: span 3; }
+
+/* ===== BREAKPOINTS RESPONSIVOS ===== */
+
+/* 1. Celulares pequenos (até 479px) — usa o padrão mobile abaixo */
+@media (max-width: 479px) {
+  .grid { gap: var(--espaco-2); }
+  h1 { font-size: var(--fonte-lg); }
+}
+
+/* 2. Celulares grandes (480px+) */
+@media (min-width: 480px) {
+  .col-4, .col-3 { grid-column: span 6; }
+}
+
+/* 3. Tablets (768px+) */
+@media (min-width: 768px) {
+  .col-4 { grid-column: span 4; }
+  .col-3 { grid-column: span 3; }
+}
+
+/* 4. Notebooks (1024px+) */
+@media (min-width: 1024px) {
+  .container { padding: 0 var(--espaco-4); }
+}
+
+/* 5. Telas grandes/desktops panorâmicos (1440px+) */
+@media (min-width: 1440px) {
+  .container { max-width: 1400px; }
+  h1 { font-size: 3rem; }
+}
+
+
+
+  /* ===== FLEXBOX: CABEÇALHO ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espaco-2) var(--espaco-4);
+  background-color: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+  flex-wrap: wrap;
+}
+
+/* ===== FLEXBOX: MENU DE NAVEGAÇÃO ===== */
+nav ul {
+  display: flex;
+  gap: var(--espaco-3);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+nav a:hover {
+  color: var(--cor-primaria-escura);
+}
+
+/* ===== FLEXBOX: RODAPÉ ===== */
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  padding: var(--espaco-4);
+  background-color: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+}
+
+footer a {
+  color: var(--cor-primaria);
+}
+
+/* ===== FLEXBOX: LINHA DO FORMULÁRIO (label + input) ===== */
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: var(--espaco-3);
+  margin-bottom: var(--espaco-3);
+}
+
+legend {
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  padding: 0 var(--espaco-1);
+}
+
+/* ===== FLEXBOX: GRUPO DE RADIO BUTTONS ===== */
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-1);
+}
+
+
+
+/* ===== MENU: BASE ===== */
+.menu {
+  display: flex;
+  gap: var(--espaco-3);
+  list-style: none;
+}
+
+.tem-submenu {
+  position: relative;
+}
+
+/* ===== SUBMENU DROPDOWN (telas grandes) ===== */
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  flex-direction: column;
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 10;
+}
+
+.tem-submenu:hover .submenu,
+.tem-submenu:focus-within .submenu {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===== BOTÃO HAMBÚRGUER (escondido em telas grandes) ===== */
+.menu-toggle-checkbox {
+  display: none;
+}
+
+.menu-toggle-label {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle-label span {
+  width: 26px;
+  height: 3px;
+  background-color: var(--cor-texto);
+  border-radius: 2px;
+}
+
+/* ===== MENU MOBILE (breakpoint) ===== */
+@media (max-width: 767px) {
+  .menu-toggle-label {
+    display: flex;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    gap: var(--espaco-2);
+    transition: max-height 0.3s ease;
+  }
+
+  .menu-toggle-checkbox:checked ~ .menu {
+    max-height: 400px;
+  }
+
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    display: none;
+    padding-left: var(--espaco-2);
+  }
+
+  .tem-submenu:focus-within .submenu,
+  .tem-submenu:hover .submenu {
+    display: flex;
+  }
+}
+
+
+
+/* ===== BOTÕES: ESTADOS INTERATIVOS ===== */
+button,
+.btn {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: var(--espaco-2) var(--espaco-4);
+  cursor: pointer;
+  transition: background-color 0.2s ease, 
+              transform 0.15s ease, 
+              box-shadow 0.2s ease;
+}
+
+/* HOVER: mouse sobre o botão */
+button:hover {
+  background-color: var(--cor-primaria-escura);
+  color: var(--cor-fundo);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* FOCUS: navegação por teclado (Tab) */
+button:focus-visible {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 2px;
+}
+
+/* ACTIVE: momento exato do clique */
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background-color: var(--cor-primaria-escura);
+}
+
+/* DISABLED: botão desabilitado */
+button:disabled {
+  background-color: var(--cor-borda);
+  color: var(--cor-texto-suave);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== FORMULÁRIO: ESTADOS DOS CAMPOS ===== */
+input,
+select,
+textarea {
+  border: 2px solid var(--cor-borda);
+  border-radius: 6px;
+  padding: var(--espaco-1) var(--espaco-2);
+  font-size: var(--fonte-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+/* FOCUS: campo selecionado pelo usuário */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(31, 111, 92, 0.15);
+}
+
+/* Só aplica a cor de validação em campos que realmente suportam placeholder */
+input[type="text"]:not(:placeholder-shown):valid,
+input[type="email"]:not(:placeholder-shown):valid,
+input[type="tel"]:not(:placeholder-shown):valid {
+  border-color: var(--cor-sucesso);
+}
+
+input[type="text"]:not(:placeholder-shown):invalid,
+input[type="email"]:not(:placeholder-shown):invalid,
+input[type="tel"]:not(:placeholder-shown):invalid {
+  border-color: var(--cor-erro);
+}
+
+/* Data e select: só sinaliza sucesso (verde), sem vermelho automático,
+   já que CSS puro não distingui "vazio ainda não visitado" de "vazio abandonado" */
+input[type="date"]:valid {
+  border-color: var(--cor-sucesso);
+}
+
+select:valid {
+  border-color: var(--cor-sucesso);
+}
+
+
+/* Ícone de status (opcional, mais visual) */
+input[type="text"]:not(:placeholder-shown):valid,
+input[type="email"]:not(:placeholder-shown):valid,
+input[type="tel"]:not(:placeholder-shown):valid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231E7D45'%3E%3Cpath d='M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+}
+
+
+
+
+/* ===== BADGES (etiquetas) ===== */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--fonte-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-voluntariado {
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+}
+
+.badge-doacao {
+  background-color: #E3F2ED;
+  color: var(--cor-secundaria-escura);
+}
+
+.badge-urgente {
+  background-color: #FCE4E4;
+  color: var(--cor-erro);
+}
+
+/* ===== ALERTAS ===== */
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-2) var(--espaco-3);
+  border-radius: 8px;
+  border-left: 5px solid;
+  margin-bottom: var(--espaco-3);
+  font-size: var(--fonte-sm);
+}
+
+.alerta-sucesso {
+  background-color: #E9F7EF;
+  border-color: var(--cor-sucesso);
+  color: #1E5C33;
+}
+
+.alerta-erro {
+  background-color: #FDECEA;
+  border-color: var(--cor-erro);
+  color: #7A1B15;
+}
+
+.alerta-info {
+  background-color: #EAF2FB;
+  border-color: #2563EB;
+  color: #1E3A6E;
+}
+
+/* ===== TOAST (notificação flutuante) ===== */
+.toast {
+  position: fixed;
+  bottom: var(--espaco-4);
+  right: var(--espaco-4);
+  background-color: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+  padding: var(--espaco-2) var(--espaco-3);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  animation: slide-in 0.3s ease;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background-color: var(--cor-fundo);
+  border-radius: 12px;
+  padding: var(--espaco-4);
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal h3 {
+  color: var(--cor-secundaria-escura);
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espaco-2);
+  margin-top: var(--espaco-3);
+}
+
+
+.campo-erro {
+  border-color: var(--cor-erro) !important;
+}
+
+.campo-sucesso {
+  border-color: var(--cor-sucesso) !important;
+}
+
+.mensagem-erro {
+  display: block;
+  color: var(--cor-erro);
+  font-size: var(--fonte-xs);
+  margin-top: 4px;
+}
