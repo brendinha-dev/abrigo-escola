@@ -419,7 +419,7 @@ input[type="tel"]:not(:placeholder-shown):valid {
 }
 
 .badge-voluntariado {
-  background-color: var(--cor-primaria-clara);
+  background-color: #FCE8B8;
   color: var(--cor-primaria-escura);
 }
 
@@ -545,4 +545,38 @@ input[type="tel"]:not(:placeholder-shown):valid {
 
 .skip-link:focus {
   left: 0;
+}
+
+
+
+/* ===== MODO DE ALTO CONTRASTE ===== */
+[data-contraste="alto"] {
+  --cor-texto: #000000;
+  --cor-fundo: #FFFFFF;
+  --cor-primaria-escura: #6B4700;
+  --cor-secundaria: #0D362D;
+  --cor-secundaria-escura: #071F19;
+  --cor-borda: #000000;
+}
+
+[data-contraste="alto"] a {
+  text-decoration: underline;
+}
+
+[data-contraste="alto"] .badge {
+  border: 2px solid currentColor;
+}
+
+.botao-contraste {
+  position: fixed;
+  bottom: var(--espaco-2);
+  right: var(--espaco-2);
+  z-index: 150;
+  background: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+  border: none;
+  border-radius: 999px;
+  padding: var(--espaco-1) var(--espaco-3);
+  font-size: var(--fonte-xs);
+  cursor: pointer;
 }
