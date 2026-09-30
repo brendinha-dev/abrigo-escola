@@ -5,7 +5,12 @@ export function templateInicio() {
         <section id="apresentacao" class="col-12">
           <h1>Instituto Esdras Andrade — Projeto Abrigo Escola</h1>
           <p>Somos uma organização não governamental sediada em São José dos Campos (SP), dedicada ao resgate, cuidado e reabilitação de cães e gatos vítimas de abandono e maus-tratos. Hoje, abrigamos centenas de animais em busca de um novo lar cheio de amor e dignidade.</p>
-          <img src="../img/equipe-voluntarios.jpeg" alt="Voluntários cuidando de cães e gatos resgatados no abrigo" width="600">
+          <picture>
+           <source srcset="../img/equipe-voluntarios.webp" type="image/webp">
+           <img src="../img/equipe-voluntarios.jpeg" 
+           alt="Voluntários cuidando de cães e gatos resgatados no abrigo" 
+           width="600" loading="lazy">
+          </picture>
         </section>
 
         <section id="missao" class="col-6">
