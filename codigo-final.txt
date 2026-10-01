@@ -1,0 +1,2084 @@
+﻿
+===== css\styles.css =====
+:root {
+  /* ===== CORES PRIMÃRIAS (Ã¢mbar / amarelo) ===== */
+  --cor-primaria: #f5b800;         /* fundos de destaque, botÃµes */
+  --cor-primaria-escura: #9A6700;  /* textos e links sobre fundo claro */
+  --cor-primaria-clara: #FFF4D6;   /* fundos suaves de seÃ§Ã£o */
+
+  /* ===== CORES SECUNDÃRIAS (verde petrÃ³leo) ===== */
+  --cor-secundaria: #1F6F5C;
+  --cor-secundaria-escura: #14483C;
+
+  /* ===== NEUTROS ===== */
+  --cor-texto: #1C1B19;            /* texto principal */
+  --cor-texto-suave: #5A5750;      /* textos de apoio */
+  --cor-borda: #E0DCD3;
+  --cor-fundo: #FFFDF8;            /* branco levemente quente */
+  --cor-fundo-alt: #F5F1E8;
+
+  /* ===== ESTADOS ===== */
+  --cor-erro: #B3261E;
+  --cor-sucesso: #1E7D45;
+
+  /* ===== TIPOGRAFIA (escala 1.25) ===== */
+  --fonte-xs: 0.875rem;  /* 14px - legendas */
+  --fonte-sm: 1rem;      /* 16px - corpo de texto */
+  --fonte-md: 1.25rem;   /* 20px - h3 */
+  --fonte-lg: 1.75rem;   /* 28px - h2 */
+  --fonte-xl: 2.5rem;    /* 40px - h1 */
+
+  /* ===== ESPAÃ‡AMENTOS (base 8px) ===== */
+  --espaco-1: 0.5rem;   /* 8px  */
+  --espaco-2: 1rem;     /* 16px */
+  --espaco-3: 1.5rem;   /* 24px */
+  --espaco-4: 2rem;     /* 32px */
+  --espaco-5: 3rem;     /* 48px */
+  --espaco-6: 4rem;     /* 64px */
+}
+
+
+
+
+/* ===== RESET BÃSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== ESTILOS BASE ===== */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: var(--fonte-sm);
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+h1 {
+  font-size: var(--fonte-xl);
+  color: var(--cor-secundaria-escura);
+  margin-bottom: var(--espaco-3);
+}
+
+h2 {
+  font-size: var(--fonte-lg);
+  color: var(--cor-secundaria);
+  margin-bottom: var(--espaco-2);
+}
+
+h3 {
+  font-size: var(--fonte-md);
+  margin-bottom: var(--espaco-2);
+}
+
+p {
+  margin-bottom: var(--espaco-2);
+  max-width: 70ch;
+}
+
+a {
+  color: var(--cor-primaria-escura);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--cor-secundaria);
+}
+
+
+
+
+/* ===== SISTEMA DE GRID (12 colunas) ===== */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--espaco-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-3);
+}
+
+/* classes utilitÃ¡rias de largura (quantas colunas ocupar) */
+.col-12 { grid-column: span 12; }
+.col-8  { grid-column: span 8; }
+.col-6  { grid-column: span 6; }
+.col-4  { grid-column: span 4; }
+.col-3  { grid-column: span 3; }
+
+/* ===== BREAKPOINTS RESPONSIVOS ===== */
+
+/* 1. Celulares pequenos (atÃ© 479px) â€” usa o padrÃ£o mobile abaixo */
+@media (max-width: 479px) {
+  .grid { gap: var(--espaco-2); }
+  h1 { font-size: var(--fonte-lg); }
+}
+
+/* 2. Celulares grandes (480px+) */
+@media (min-width: 480px) {
+  .col-4, .col-3 { grid-column: span 6; }
+}
+
+/* 3. Tablets (768px+) */
+@media (min-width: 768px) {
+  .col-4 { grid-column: span 4; }
+  .col-3 { grid-column: span 3; }
+}
+
+/* 4. Notebooks (1024px+) */
+@media (min-width: 1024px) {
+  .container { padding: 0 var(--espaco-4); }
+}
+
+/* 5. Telas grandes/desktops panorÃ¢micos (1440px+) */
+@media (min-width: 1440px) {
+  .container { max-width: 1400px; }
+  h1 { font-size: 3rem; }
+}
+
+
+
+  /* ===== FLEXBOX: CABEÃ‡ALHO ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espaco-2) var(--espaco-4);
+  background-color: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+  flex-wrap: wrap;
+}
+
+/* ===== FLEXBOX: MENU DE NAVEGAÃ‡ÃƒO ===== */
+nav ul {
+  display: flex;
+  gap: var(--espaco-3);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+nav a:hover {
+  color: var(--cor-primaria-escura);
+}
+
+/* ===== FLEXBOX: RODAPÃ‰ ===== */
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  padding: var(--espaco-4);
+  background-color: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+}
+
+footer a {
+  color: var(--cor-primaria);
+}
+
+/* ===== FLEXBOX: LINHA DO FORMULÃRIO (label + input) ===== */
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: var(--espaco-3);
+  margin-bottom: var(--espaco-3);
+}
+
+legend {
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  padding: 0 var(--espaco-1);
+}
+
+/* ===== FLEXBOX: GRUPO DE RADIO BUTTONS ===== */
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-1);
+}
+
+
+
+/* ===== MENU: BASE ===== */
+.menu {
+  display: flex;
+  gap: var(--espaco-3);
+  list-style: none;
+}
+
+.tem-submenu {
+  position: relative;
+}
+
+/* ===== SUBMENU DROPDOWN (telas grandes) ===== */
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  flex-direction: column;
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 10;
+}
+
+.tem-submenu:hover .submenu,
+.tem-submenu:focus-within .submenu {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===== BOTÃƒO HAMBÃšRGUER (escondido em telas grandes) ===== */
+.menu-toggle-checkbox {
+  display: none;
+}
+
+.menu-toggle-label {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle-label span {
+  width: 26px;
+  height: 3px;
+  background-color: var(--cor-texto);
+  border-radius: 2px;
+}
+
+/* ===== MENU MOBILE (breakpoint) ===== */
+@media (max-width: 767px) {
+  .menu-toggle-label {
+    display: flex;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    gap: var(--espaco-2);
+    transition: max-height 0.3s ease;
+  }
+
+  .menu-toggle-checkbox:checked ~ .menu {
+    max-height: 400px;
+  }
+
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    display: none;
+    padding-left: var(--espaco-2);
+  }
+
+  .tem-submenu:focus-within .submenu,
+  .tem-submenu:hover .submenu {
+    display: flex;
+  }
+}
+
+
+
+/* ===== BOTÃ•ES: ESTADOS INTERATIVOS ===== */
+button,
+.btn {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: var(--espaco-2) var(--espaco-4);
+  cursor: pointer;
+  transition: background-color 0.2s ease, 
+              transform 0.15s ease, 
+              box-shadow 0.2s ease;
+}
+
+/* HOVER: mouse sobre o botÃ£o */
+button:hover {
+  background-color: var(--cor-primaria-escura);
+  color: var(--cor-fundo);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* FOCUS: navegaÃ§Ã£o por teclado (Tab) */
+button:focus-visible {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 2px;
+}
+
+/* ACTIVE: momento exato do clique */
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background-color: var(--cor-primaria-escura);
+}
+
+/* DISABLED: botÃ£o desabilitado */
+button:disabled {
+  background-color: var(--cor-borda);
+  color: var(--cor-texto-suave);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== FORMULÃRIO: ESTADOS DOS CAMPOS ===== */
+input,
+select,
+textarea {
+  border: 2px solid var(--cor-borda);
+  border-radius: 6px;
+  padding: var(--espaco-1) var(--espaco-2);
+  font-size: var(--fonte-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+/* FOCUS: campo selecionado pelo usuÃ¡rio */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(31, 111, 92, 0.15);
+}
+
+/* SÃ³ aplica a cor de validaÃ§Ã£o em campos que realmente suportam placeholder */
+input[type="text"]:not(:placeholder-shown):valid,
+input[type="email"]:not(:placeholder-shown):valid,
+input[type="tel"]:not(:placeholder-shown):valid {
+  border-color: var(--cor-sucesso);
+}
+
+input[type="text"]:not(:placeholder-shown):invalid,
+input[type="email"]:not(:placeholder-shown):invalid,
+input[type="tel"]:not(:placeholder-shown):invalid {
+  border-color: var(--cor-erro);
+}
+
+/* Data e select: sÃ³ sinaliza sucesso (verde), sem vermelho automÃ¡tico,
+   jÃ¡ que CSS puro nÃ£o distingui "vazio ainda nÃ£o visitado" de "vazio abandonado" */
+input[type="date"]:valid {
+  border-color: var(--cor-sucesso);
+}
+
+select:valid {
+  border-color: var(--cor-sucesso);
+}
+
+
+/* Ãcone de status (opcional, mais visual) */
+input[type="text"]:not(:placeholder-shown):valid,
+input[type="email"]:not(:placeholder-shown):valid,
+input[type="tel"]:not(:placeholder-shown):valid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231E7D45'%3E%3Cpath d='M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+}
+
+
+
+
+/* ===== BADGES (etiquetas) ===== */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--fonte-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-voluntariado {
+  background-color: #FCE8B8;
+  color: var(--cor-primaria-escura);
+}
+
+.badge-doacao {
+  background-color: #E3F2ED;
+  color: var(--cor-secundaria-escura);
+}
+
+.badge-urgente {
+  background-color: #FCE4E4;
+  color: var(--cor-erro);
+}
+
+/* ===== ALERTAS ===== */
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-2) var(--espaco-3);
+  border-radius: 8px;
+  border-left: 5px solid;
+  margin-bottom: var(--espaco-3);
+  font-size: var(--fonte-sm);
+}
+
+.alerta-sucesso {
+  background-color: #E9F7EF;
+  border-color: var(--cor-sucesso);
+  color: #1E5C33;
+}
+
+.alerta-erro {
+  background-color: #FDECEA;
+  border-color: var(--cor-erro);
+  color: #7A1B15;
+}
+
+.alerta-info {
+  background-color: #EAF2FB;
+  border-color: #2563EB;
+  color: #1E3A6E;
+}
+
+/* ===== TOAST (notificaÃ§Ã£o flutuante) ===== */
+.toast {
+  position: fixed;
+  bottom: var(--espaco-4);
+  right: var(--espaco-4);
+  background-color: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+  padding: var(--espaco-2) var(--espaco-3);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  animation: slide-in 0.3s ease;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background-color: var(--cor-fundo);
+  border-radius: 12px;
+  padding: var(--espaco-4);
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal h3 {
+  color: var(--cor-secundaria-escura);
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espaco-2);
+  margin-top: var(--espaco-3);
+}
+
+
+.campo-erro {
+  border-color: var(--cor-erro) !important;
+}
+
+.campo-sucesso {
+  border-color: var(--cor-sucesso) !important;
+}
+
+.mensagem-erro {
+  display: block;
+  color: var(--cor-erro);
+  font-size: var(--fonte-xs);
+  margin-top: 4px;
+}
+
+
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+  padding: var(--espaco-2);
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+
+
+/* ===== MODO DE ALTO CONTRASTE ===== */
+[data-contraste="alto"] {
+  --cor-texto: #000000;
+  --cor-fundo: #FFFFFF;
+  --cor-primaria-escura: #6B4700;
+  --cor-secundaria: #0D362D;
+  --cor-secundaria-escura: #071F19;
+  --cor-borda: #000000;
+}
+
+[data-contraste="alto"] a {
+  text-decoration: underline;
+}
+
+[data-contraste="alto"] .badge {
+  border: 2px solid currentColor;
+}
+
+.botao-contraste {
+  position: fixed;
+  bottom: var(--espaco-2);
+  right: var(--espaco-2);
+  z-index: 150;
+  background: var(--cor-secundaria-escura);
+  color: var(--cor-fundo);
+  border: none;
+  border-radius: 999px;
+  padding: var(--espaco-1) var(--espaco-3);
+  font-size: var(--fonte-xs);
+  cursor: pointer;
+}
+
+===== html\cadastro.html =====
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se â€” Instituto Esdras Andrade</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <header>
+        <img src="../img/logo.jpg" alt="Logotipo do Instituto Esdras Andrade" width="120">
+        <nav>
+            <ul>
+                <li><a href="index.html">InÃ­cio</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Cadastre-se Como VoluntÃ¡rio ou Doador</h1>
+        <p>Preencha o formulÃ¡rio abaixo para fazer parte da nossa rede de apoio.</p>
+
+        <form action="#" method="post">
+
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <label for="nome">Nome completo:</label>
+                <input type="text" id="nome" name="nome" required
+                       placeholder="Digite aqui">
+                       
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required
+                       placeholder="Digite aqui">
+
+                <label for="nascimento">Data de nascimento:</label>
+                <input type="date" id="nascimento" name="nascimento" required
+                       placeholder="[0-9]{2}\.[0-9]{2}\.[0-9]{4}">
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" 
+                       pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" 
+                       placeholder="000.000.000-00" 
+                       title="Formato esperado: 000.000.000-00" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" 
+                       pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" 
+                       placeholder="(00) 00000-0000" 
+                       title="Formato esperado: (00) 00000-0000" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>EndereÃ§o</legend>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" 
+                       pattern="[0-9]{5}-[0-9]{3}" 
+                       placeholder="00000-000" 
+                       title="Formato esperado: 00000-000" required>
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required
+                       placeholder="Digite aqui">
+
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="">Selecione</option>
+                    <option value="SP">SÃ£o Paulo</option>
+                    <option value="GO">GoiÃ¡s</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="MG">Minas Gerais</option>
+                    <!-- demais estados podem ser adicionados aqui -->
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Ãrea de Interesse</legend>
+
+           
+                 <div class="radio-group">
+                  <p>Deseja se cadastrar como:</p>
+                  <input type="radio" id="voluntario" name="interesse" value="voluntario" required>
+                  <label for="voluntario">VoluntÃ¡rio</label>
+                 </div>
+
+                 <div class="radio-group">
+                  <input type="radio" id="doador" name="interesse" value="doador">
+                  <label for="doador">Doador</label>
+                 </div>
+            
+
+                 <div class="radio-group">
+                  <label for="observacoes">ObservaÃ§Ãµes (opcional):</label>
+                  <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                </div>
+
+            </fieldset>
+
+            <button type="submit">Enviar Cadastro</button>
+        </form>
+    </main>
+
+    <footer>
+        <h2>Contato</h2>
+        <address>
+            <p>E-mail: <a href="mailto:projeto.abrigoescola@gmail.com">projeto.abrigoescola@gmail.com</a></p>
+            <p>Telefone: <a href="tel:+5512996620077">(12) 99662-0077</a></p>
+            <p>EndereÃ§o: Rua dos CanÃ¡rios, 31 â€” Vila Tatetuba, SÃ£o JosÃ© dos Campos, SP</p>
+        </address>
+    </footer>
+
+</body>
+</html>
+
+===== html\projetos.html =====
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Projetos â€” Instituto Esdras Andrade</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <header>
+        <img src="../img/logo.jpg" alt="Logotipo do Instituto Esdras Andrade" width="120">
+        <nav>
+            <ul>
+                <li><a href="index.html">InÃ­cio</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro-projetos">
+            <h1>Nossos Projetos</h1>
+            <p>
+                ConheÃ§a as principais frentes de atuaÃ§Ã£o do Projeto Abrigo
+                Escola e descubra como vocÃª pode contribuir, seja com tempo,
+                seja com recursos financeiros ou materiais.
+            </p>
+        </section>
+
+        <section id="voluntariado">
+            <h2>Seja VoluntÃ¡rio</h2>
+            <p>
+                O trabalho voluntÃ¡rio Ã© essencial para o cuidado diÃ¡rio de
+                centenas de animais resgatados. Existem diferentes formas
+                de contribuir com seu tempo:
+            </p>
+            <ul>
+                <li>Resgate e transporte de animais em situaÃ§Ã£o de rua</li>
+                <li>Cuidados diÃ¡rios no abrigo (alimentaÃ§Ã£o, higiene, passeios)</li>
+                <li>Apoio em eventos de adoÃ§Ã£o responsÃ¡vel</li>
+                <li>DivulgaÃ§Ã£o da causa em redes sociais</li>
+            </ul>
+        </section>
+
+        <section id="doacoes">
+            <h2>Como Doar</h2>
+            <p>
+                Sua contribuiÃ§Ã£o financeira ou material ajuda a custear
+                despesas veterinÃ¡rias, alimentaÃ§Ã£o e manutenÃ§Ã£o dos espaÃ§os
+                do abrigo. Veja como cada valor pode ajudar:
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Valor</th>
+                        <th>O que custeia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R$ 30</td>
+                        <td>RaÃ§Ã£o para um animal por 1 semana</td>
+                    </tr>
+                    <tr>
+                        <td>R$ 80</td>
+                        <td>VacinaÃ§Ã£o completa de um animal</td>
+                    </tr>
+                    <tr>
+                        <td>R$ 150</td>
+                        <td>CastraÃ§Ã£o de um animal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="cta-cadastro">
+            <h2>Quer fazer parte dessa causa?</h2>
+            <p>
+                <a href="cadastro.html">Cadastre-se agora</a> como voluntÃ¡rio
+                ou doador e ajude a transformar a vida de dezenas de animais.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <h2>Contato</h2>
+        <address>
+            <p>E-mail: <a href="mailto:projeto.abrigoescola@gmail.com">projeto.abrigoescola@gmail.com</a></p>
+            <p>Telefone: <a href="tel:+5512996620077">(12) 99662-0077</a></p>
+            <p>EndereÃ§o: Rua dos CanÃ¡rios, 31 â€” Vila Tatetuba, SÃ£o JosÃ© dos Campos, SP</p>
+        </address>
+    </footer>
+
+</body>
+</html>
+
+===== js\data\projetos.js =====
+export const projetos = [
+  {
+    id: 1,
+    titulo: 'Resgate e Transporte',
+    categoria: 'Voluntariado',
+    descricao: 'Ajude a resgatar e transportar animais em situaÃ§Ã£o de rua.',
+    urgente: false
+  },
+  {
+    id: 2,
+    titulo: 'Cuidados DiÃ¡rios no Abrigo',
+    categoria: 'Voluntariado',
+    descricao: 'AlimentaÃ§Ã£o, higiene e passeios com os animais resgatados.',
+    urgente: false
+  },
+  {
+    id: 3,
+    titulo: 'Campanha de CastraÃ§Ã£o',
+    categoria: 'DoaÃ§Ã£o',
+    descricao: 'Contribua com R$ 150 para custear a castraÃ§Ã£o de um animal.',
+    urgente: true
+  },
+  {
+    id: 4,
+    titulo: 'VacinaÃ§Ã£o em Massa',
+    categoria: 'DoaÃ§Ã£o',
+    descricao: 'Ajude a vacinar animais recÃ©m-resgatados contra doenÃ§as graves.',
+    urgente: false
+  }
+];
+
+===== js\modules\eventos.js =====
+import { validarFormulario } from './validacao.js';
+import { salvarCadastro } from './storage.js';
+
+export function configurarEventos() {
+  const app = document.getElementById('app');
+
+  app.addEventListener('submit', (evento) => {
+    if (evento.target.id === 'form-cadastro') {
+      evento.preventDefault();
+
+      const form = evento.target;
+      const formularioValido = validarFormulario(form);
+
+      if (formularioValido) {
+        // monta um objeto simples com os dados do formulÃ¡rio
+        const cadastro = {
+          nome: form.querySelector('#nome').value,
+          email: form.querySelector('#email').value,
+          interesse: form.querySelector('input[name="interesse"]:checked')?.value || '',
+          dataCadastro: new Date().toISOString(),
+        };
+
+        salvarCadastro(cadastro);
+        console.log('Cadastro salvo no localStorage:', cadastro);
+        form.reset(); // limpa o formulÃ¡rio depois do envio
+      } else {
+        console.log('FormulÃ¡rio contÃ©m erros â€” envio bloqueado.');
+      }
+    }
+  });
+
+  document.querySelector('nav').addEventListener('click', (evento) => {
+    if (evento.target.matches('.menu a')) {
+      const checkbox = document.getElementById('menu-toggle');
+      if (checkbox) checkbox.checked = false;
+    }
+  });
+}
+
+===== js\modules\router.js =====
+import { templateInicio, templateProjetos, templateCadastro } from './templates.js';
+import { projetos } from '../data/projetos.js';
+
+// Tabela de rotas: associa cada "endereÃ§o" hash Ã  funÃ§Ã£o que gera seu HTML
+const rotas = {
+  '': templateInicio,
+  '#/': templateInicio,
+  '#/projetos': () => templateProjetos(projetos), // agora passa a lista de dados
+  '#/cadastro': templateCadastro,
+};
+
+// FunÃ§Ã£o principal: limpa o container e injeta o novo conteÃºdo
+function renderizarRota() {
+  const hashAtual = window.location.hash || '#/';
+  const template = rotas[hashAtual] || templateInicio;
+  const container = document.getElementById('app');
+
+  container.innerHTML = '';          // limpa o conteÃºdo anterior
+  container.innerHTML = template();  // injeta o novo fragmento HTML
+
+  atualizarLinkAtivo(hashAtual);
+}
+
+// Destaca visualmente o link do menu correspondente Ã  rota atual
+function atualizarLinkAtivo(hashAtual) {
+  document.querySelectorAll('nav a').forEach(link => {
+    const rotaDoLink = link.getAttribute('href');
+    link.classList.toggle('ativo', rotaDoLink === hashAtual);
+  });
+}
+
+export function iniciarRouter() {
+  window.addEventListener('hashchange', renderizarRota); // dispara ao trocar de rota
+  renderizarRota(); // renderiza a rota inicial assim que a app carrega
+}
+
+===== js\modules\storage.js =====
+const CHAVE = 'abrigoescola_cadastros';
+
+export function salvarCadastro(novoCadastro) {
+  const listaAtual = obterCadastros();
+  listaAtual.push(novoCadastro);
+  localStorage.setItem(CHAVE, JSON.stringify(listaAtual));
+
+  // NOVO: usa o Day.js para formatar a data de forma legÃ­vel no console
+  const dataFormatada = dayjs(novoCadastro.dataCadastro).format('DD/MM/YYYY [Ã s] HH:mm');
+  console.log(`Cadastro de ${novoCadastro.nome} salvo em ${dataFormatada}.`);
+}
+
+export function obterCadastros() {
+  const dadosSalvos = localStorage.getItem(CHAVE);
+  return dadosSalvos ? JSON.parse(dadosSalvos) : [];
+}
+
+===== js\modules\tema.js =====
+const CHAVE_TEMA = 'abrigoescola_contraste';
+
+export function iniciarTema() {
+  const salvo = localStorage.getItem(CHAVE_TEMA);
+  if (salvo === 'alto') aplicarAltoContraste(true);
+
+  document.getElementById('btn-contraste').addEventListener('click', () => {
+    const ativo = document.body.getAttribute('data-contraste') === 'alto';
+    aplicarAltoContraste(!ativo);
+    localStorage.setItem(CHAVE_TEMA, !ativo ? 'alto' : 'normal');
+  });
+}
+
+function aplicarAltoContraste(ativar) {
+  const btn = document.getElementById('btn-contraste');
+  if (ativar) {
+    document.body.setAttribute('data-contraste', 'alto');
+    btn.setAttribute('aria-pressed', 'true');
+  } else {
+    document.body.removeAttribute('data-contraste');
+    btn.setAttribute('aria-pressed', 'false');
+  }
+}
+
+===== js\modules\templates.js =====
+export function templateInicio() {
+  return `
+    <div class="container">
+      <div class="grid">
+        <section id="apresentacao" class="col-12">
+          <h1>Instituto Esdras Andrade â€” Projeto Abrigo Escola</h1>
+          <p>Somos uma organizaÃ§Ã£o nÃ£o governamental sediada em SÃ£o JosÃ© dos Campos (SP), dedicada ao resgate, cuidado e reabilitaÃ§Ã£o de cÃ£es e gatos vÃ­timas de abandono e maus-tratos. Hoje, abrigamos centenas de animais em busca de um novo lar cheio de amor e dignidade.</p>
+          <picture>
+           <source srcset="../img/equipe-voluntarios.webp" type="image/webp">
+           <img src="../img/equipe-voluntarios.jpeg" 
+           alt="VoluntÃ¡rios cuidando de cÃ£es e gatos resgatados no abrigo" 
+           width="600" loading="lazy">
+          </picture>
+        </section>
+
+        <section id="missao" class="col-6">
+          <h2>Nossa MissÃ£o</h2>
+          <p>Resgatar, tratar e cuidar de animais em situaÃ§Ã£o de abandono e maus-tratos, promovendo castraÃ§Ã£o, vacinaÃ§Ã£o e a busca por lares responsÃ¡veis, alÃ©m de conscientizar a comunidade sobre a importÃ¢ncia da posse responsÃ¡vel.</p>
+        </section>
+
+        <section id="como-ajudar" class="col-6">
+          <h2>Como VocÃª Pode Ajudar</h2>
+          <p>Seja como doador, voluntÃ¡rio ou apadrinhador, sua ajuda Ã© fundamental. <a href="#/cadastro">Cadastre-se agora</a> e junte-se a essa causa.</p>
+        </section>
+      </div>
+    </div>`;
+}
+
+/* ===== NOVO: gera o HTML de UM card, a partir de um objeto de projeto ===== */
+function gerarCardProjeto(projeto) {
+  const classeBadge = projeto.categoria === 'Voluntariado' ? 'badge-voluntariado' : 'badge-doacao';
+  const badgeUrgente = projeto.urgente
+    ? '<span class="badge badge-urgente">Urgente</span>'
+    : '';
+
+  return `
+    <article class="card col-6">
+      <span class="badge ${classeBadge}">${projeto.categoria}</span>
+      ${badgeUrgente}
+      <h3>${projeto.titulo}</h3>
+      <p>${projeto.descricao}</p>
+    </article>`;
+}
+
+/* ===== NOVO: percorre a LISTA de projetos e gera todos os cards de uma vez ===== */
+function gerarListaCards(listaProjetos) {
+  return listaProjetos.map(gerarCardProjeto).join('');
+}
+
+/* ===== ALTERADO: agora recebe "listaProjetos" como parÃ¢metro ===== */
+export function templateProjetos(listaProjetos) {
+  return `
+    <div class="container">
+      <h1>Nossos Projetos</h1>
+      <p>ConheÃ§a as frentes de atuaÃ§Ã£o do Projeto Abrigo Escola:</p>
+      <div class="grid">
+        ${gerarListaCards(listaProjetos)}
+      </div>
+
+      <section id="doacoes">
+        <h2>Como Doar</h2>
+        <p>Sua contribuiÃ§Ã£o ajuda a custear despesas veterinÃ¡rias, alimentaÃ§Ã£o e manutenÃ§Ã£o do abrigo:</p>
+        <table>
+          <thead><tr><th>Valor</th><th>O que custeia</th></tr></thead>
+          <tbody>
+            <tr><td>R$ 30</td><td>RaÃ§Ã£o para um animal por 1 semana</td></tr>
+            <tr><td>R$ 80</td><td>VacinaÃ§Ã£o completa de um animal</td></tr>
+            <tr><td>R$ 150</td><td>CastraÃ§Ã£o de um animal</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="cta-cadastro">
+        <h2>Quer fazer parte dessa causa?</h2>
+        <p><a href="#/cadastro">Cadastre-se agora</a> como voluntÃ¡rio ou doador.</p>
+      </section>
+    </div>`;
+}
+
+export function templateCadastro() {
+  return `
+    <div class="container">
+      <h1>Cadastre-se Como VoluntÃ¡rio ou Doador</h1>
+      <p>Preencha o formulÃ¡rio abaixo para fazer parte da nossa rede de apoio.</p>
+
+      <form id="form-cadastro" novalidate>
+        <fieldset>
+          <legend>Dados Pessoais</legend>
+          <label for="nome">Nome completo:</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite aqui"
+                 aria-required="true" aria-describedby="nome-erro" required>
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" placeholder="Digite aqui"
+                 aria-required="true" aria-describedby="email-erro" required>
+
+          <label for="nascimento">Data de nascimento:</label>
+          <input type="date" id="nascimento" name="nascimento"
+                 aria-required="true" required>
+
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" name="cpf" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}"
+                 placeholder="000.000.000-00" title="Formato: 000.000.000-00"
+                 aria-required="true" aria-describedby="cpf-erro" required>
+
+          <label for="telefone">Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}"
+                 placeholder="(00) 00000-0000" title="Formato: (00) 00000-0000"
+                 aria-required="true" aria-describedby="telefone-erro" required>
+        </fieldset>
+
+        <fieldset>
+          <legend>EndereÃ§o</legend>
+          <label for="cep">CEP:</label>
+          <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}"
+                 placeholder="00000-000" title="Formato: 00000-000"
+                 aria-required="true" aria-describedby="cep-erro" required>
+
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade" placeholder="Digite aqui" required>
+
+          <label for="estado">Estado:</label>
+          <select id="estado" name="estado" required>
+            <option value="">Selecione</option>
+            <option value="SP">SÃ£o Paulo</option>
+            <option value="GO">GoiÃ¡s</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="MG">Minas Gerais</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Ãrea de Interesse</legend>
+          <p>Deseja se cadastrar como:</p>
+          <div class="radio-group">
+            <input type="radio" id="voluntario" name="interesse" value="voluntario" required>
+            <label for="voluntario">VoluntÃ¡rio</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="doador" name="interesse" value="doador">
+            <label for="doador">Doador</label>
+          </div>
+
+          <label for="observacoes">ObservaÃ§Ãµes (opcional):</label>
+          <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+        </fieldset>
+
+        <button type="submit">Enviar Cadastro</button>
+      </form>
+    </div>`;
+}
+
+===== js\modules\validacao.js =====
+// Cada regra: qual campo, qual RegEx testa o valor, e qual mensagem mostrar se falhar
+const regras = [
+  { id: 'nome', regex: /^.{3,}$/, mensagem: 'Digite seu nome completo (mÃ­nimo 3 letras).' },
+  { id: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, mensagem: 'Digite um e-mail vÃ¡lido.' },
+  { id: 'cpf', regex: /^\d{3}\.\d{3}\.\d{3}-\d{2}$/, mensagem: 'CPF deve estar no formato 000.000.000-00.' },
+  { id: 'telefone', regex: /^\(\d{2}\) \d{5}-\d{4}$/, mensagem: 'Telefone deve estar no formato (00) 00000-0000.' },
+  { id: 'cep', regex: /^\d{5}-\d{3}$/, mensagem: 'CEP deve estar no formato 00000-000.' },
+];
+
+// Valida UM campo especÃ­fico e atualiza sua aparÃªncia + mensagem
+function validarCampo(campo, regex, mensagem) {
+  const valor = campo.value.trim();
+  const valido = regex.test(valor);
+
+  // remove mensagem de erro antiga, se existir, antes de decidir se cria outra
+  const erroExistente = campo.parentElement.querySelector('.mensagem-erro');
+  if (erroExistente) erroExistente.remove();
+
+  if (valido) {
+    campo.classList.remove('campo-erro');
+    campo.classList.add('campo-sucesso');
+  } else {
+    campo.classList.remove('campo-sucesso');
+    campo.classList.add('campo-erro');
+
+    const spanErro = document.createElement('span');
+    spanErro.className = 'mensagem-erro';
+    spanErro.textContent = mensagem;
+    campo.insertAdjacentElement('afterend', spanErro);
+  }
+
+  return valido;
+}
+
+// FunÃ§Ã£o principal: percorre TODAS as regras e retorna true sÃ³ se tudo passar
+export function validarFormulario(form) {
+  let tudoValido = true;
+
+  regras.forEach(({ id, regex, mensagem }) => {
+    const campo = form.querySelector(`#${id}`);
+    if (campo) {
+      const valido = validarCampo(campo, regex, mensagem);
+      if (!valido) tudoValido = false;
+    }
+  });
+
+  return tudoValido;
+}
+
+===== js\main.js =====
+import { iniciarRouter } from './modules/router.js';
+import { configurarEventos } from './modules/eventos.js';
+import { iniciarTema } from './modules/tema.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  iniciarRouter();
+  configurarEventos();
+  iniciarTema();
+});
+
+===== index.html =====
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Esdras Andrade - Projeto Abrigo Escola</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+  <a href="#app" class="skip-link">Pular para o conteÃºdo principal</a>
+
+  <header>
+    <picture>
+     <source srcset="img/logo.webp" type="image/webp">
+     <img src="img/logo.jpg" alt="Logotipo do Instituto Esdras Andrade" width="120">
+    </picture>
+
+    <nav aria-label="NavegaÃ§Ã£o principal">
+      <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+      <label for="menu-toggle" class="menu-toggle-label" aria-label="Abrir menu de navegaÃ§Ã£o">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="menu">
+        <li><a href="#/">InÃ­cio</a></li>
+        <li><a href="#/projetos">Projetos</a></li>
+        <li><a href="#/cadastro">Cadastre-se</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="app" role="main" aria-live="polite"></div>
+  </main>
+  ...
+
+    <footer>
+        <h2>Contato</h2>
+        <address>
+            <p>E-mail: <a href="mailto:projeto.abrigoescola@gmail.com">projeto.abrigoescola@gmail.com</a></p>
+            <p>Telefone: <a href="tel:+5512996620077">(12) 99662-0077</a></p>
+            <p>EndereÃ§o: Rua dos CanÃ¡rios, 31 â€” Vila Tatetuba, SÃ£o JosÃ© dos Campos, SP</p>
+        </address>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+    <button class="botao-contraste" id="btn-contraste" aria-pressed="false">
+     Alto Contraste
+    </button>
+
+</body>
+</html>
+
+===== package-lock.json =====
+{
+  "name": "abrigo-escola",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "abrigo-escola",
+      "version": "1.0.0",
+      "license": "ISC",
+      "devDependencies": {
+        "vite": "^8.3.1"
+      }
+    },
+    "node_modules/@oxc-project/types": {
+      "version": "0.151.0",
+      "resolved": "https://registry.npmjs.org/@oxc-project/types/-/types-0.151.0.tgz",
+      "integrity": "sha512-J1yXrIlNDZVzE3ada310xeAw7nH8yCAyLPuUIsjKatFPmfn5bS1oW+cM+QsGOtVWd5nhSpbwZWx/rue+r5Z+PA==",
+      "dev": true,
+      "license": "MIT",
+      "funding": {
+        "url": "https://github.com/sponsors/oxc-project"
+      }
+    },
+    "node_modules/@rolldown/binding-android-arm-eabi": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-android-arm-eabi/-/binding-android-arm-eabi-1.2.11.tgz",
+      "integrity": "sha512-A5kXfGKvKWWZE0TtPrfsvT+q4Y5d1QG8gGUzpYjGydM+fARM9MuX90PrXYXe0XbsDVgyxxNzHo6giCj90bsFNw==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-android-arm64": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-android-arm64/-/binding-android-arm64-1.2.11.tgz",
+      "integrity": "sha512-z6cTycz+iJ4PVkuL4HHW4DfTfoeU/2nqYYuSOrTmH7yHK5Y0LCOnA03V4ZNxavyVaU1oOqUgIg2klN/s+USGOA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-darwin-arm64": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-darwin-arm64/-/binding-darwin-arm64-1.2.11.tgz",
+      "integrity": "sha512-jShvqNtP6vDC6/A5JOAzbVV+DkgHqhl/ScVCJEbt+TUY6QYz7YnXcrg3sLtFBniro0f/Ld50ZwCWA6f7KYD1nQ==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-darwin-x64": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-darwin-x64/-/binding-darwin-x64-1.2.11.tgz",
+      "integrity": "sha512-f2i2xiNWq1Z1l2++q2fuhZRdLAT3aqxD6vRNm1RAxpUoBcdqNB3C0s1Bt+K+PbEx2F5F4gQp6hqKkphCY/xF9w==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-freebsd-x64": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-freebsd-x64/-/binding-freebsd-x64-1.2.11.tgz",
+      "integrity": "sha512-4Ir5FSOKIAMr4r0kExpt1s3bMgzJU3rA45AYOHtQpls0oNeqcYBKrWMlckrYH4KCfGLfkfn1tN1dmZPMVsdXow==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "freebsd"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-arm-gnueabihf": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.2.11.tgz",
+      "integrity": "sha512-/gnRDM+39BROzAN/k1OZjDPnDMcZxB/0EUxKjONO5yVkNEvlsoMDrxGNKgZi/ttFriS2gwlDNzB65pvNbFOXIQ==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-arm64-gnu": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.2.11.tgz",
+      "integrity": "sha512-PFaK8HwvAHbaKbBcDNQihjMKYvFnA5hiENx/l5tphTDz1E0WFp32l0A7aq7lyUwGsRw/xSrNIy/gIK4thrSCrw==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "libc": [
+        "glibc"
+      ],
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-arm64-musl": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.2.11.tgz",
+      "integrity": "sha512-AskzJUIKRLPxkruR1wLKewGbOw+EYfU/9lOrBFj4AFrEA8hPpKFnODWNu2WLaNs0QNkEb9QIJufmVZZIL/bJlg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "libc": [
+        "musl"
+      ],
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-ppc64-gnu": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-1.2.11.tgz",
+      "integrity": "sha512-qlUGAheh2yh8afH7QBgx0PrRHN85hKnNd78x8MeMhXivuevgd8vgf6/CstOzmNKY/lLTHvNTrPy98cLnAugzJw==",
+      "cpu": [
+        "ppc64"
+      ],
+      "dev": true,
+      "libc": [
+        "glibc"
+      ],
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-s390x-gnu": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-1.2.11.tgz",
+      "integrity": "sha512-secpEad+0vCbSfn8upFySkDskv+bGPk3THSDS9Y89yc4rb4kzqHp8Dmyd9BkQW4SnhNXBZCl/6CrO//hZahNJQ==",
+      "cpu": [
+        "s390x"
+      ],
+      "dev": true,
+      "libc": [
+        "glibc"
+      ],
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-x64-gnu": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.2.11.tgz",
+      "integrity": "sha512-mOVBT3dPpkWm8XBWPmU4bf+U6dYDLeMo/9ojUmis4N0L5uu10qra5vOyngZ7/PSdoE4G9KvRt4bloRxNjLas7A==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "libc": [
+        "glibc"
+      ],
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-linux-x64-musl": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-linux-x64-musl/-/binding-linux-x64-musl-1.2.11.tgz",
+      "integrity": "sha512-Is78i9A8Ui4SqcxUwFJ9uMmjDn58IbVTjFWYdQestFEgeuEmHMLGNriXnVJKkwG2YiZjw8cP0zCTyDMdDGtOOg==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "libc": [
+        "musl"
+      ],
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-openharmony-arm64": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-openharmony-arm64/-/binding-openharmony-arm64-1.2.11.tgz",
+      "integrity": "sha512-dUCXneZ87INUMyQ0D+C0HrEBNUPNXHaPmU5GTjyKTJEiussw9Kaj5Ln8UztPe4epV/ffvgNBEadksdYhmW6xJA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "openharmony"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-win32-arm64-msvc": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.2.11.tgz",
+      "integrity": "sha512-jByxb6qfd+bH1xUd0qnfFnb17i9sWBPY2tOavJ0l3tdr3OTu+Kvtm8cd/JV5nFt657b1VqGltxg9olOEfofXWw==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/binding-win32-x64-msvc": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.2.11.tgz",
+      "integrity": "sha512-/PzKqzAJ03i19oy2ItPvyvaVjOjBCNnfaJs8yvUdGBKmiESgnrJSQ2awd81QzFbbnAmu7YO9ZnJrDCb9VSJPRA==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      }
+    },
+    "node_modules/@rolldown/pluginutils": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.0.1.tgz",
+      "integrity": "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/detect-libc": {
+      "version": "2.1.2",
+      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz",
+      "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/fdir": {
+      "version": "6.5.0",
+      "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+      "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=12.0.0"
+      },
+      "peerDependencies": {
+        "picomatch": "^3 || ^4"
+      },
+      "peerDependenciesMeta": {
+        "picomatch": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/fsevents": {
+      "version": "2.3.3",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+      "dev": true,
+      "hasInstallScript": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+      }
+    },
+    "node_modules/lightningcss": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz",
+      "integrity": "sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==",
+      "dev": true,
+      "license": "MPL-2.0",
+      "dependencies": {
+        "detect-libc": "^2.0.3"
+      },
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      },
+      "optionalDependencies": {
+        "lightningcss-android-arm64": "1.33.0",
+        "lightningcss-darwin-arm64": "1.33.0",
+        "lightningcss-darwin-x64": "1.33.0",
+        "lightningcss-freebsd-x64": "1.33.0",
+        "lightningcss-linux-arm-gnueabihf": "1.33.0",
+        "lightningcss-linux-arm64-gnu": "1.33.0",
+        "lightningcss-linux-arm64-musl": "1.33.0",
+        "lightningcss-linux-x64-gnu": "1.33.0",
+        "lightningcss-linux-x64-musl": "1.33.0",
+        "lightningcss-win32-arm64-msvc": "1.33.0",
+        "lightningcss-win32-x64-msvc": "1.33.0"
+      }
+    },
+    "node_modules/lightningcss-android-arm64": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-android-arm64/-/lightningcss-android-arm64-1.33.0.tgz",
+      "integrity": "sha512-gEpRTalKdosp4Bb8qWtc2iOgE5SeIHlpS1up9bFq2wAyYhl1UdTObYiHe98zEM9SQvSoqQZ1IQD0JNpg3Ml5pg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "android"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-darwin-arm64": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.33.0.tgz",
+      "integrity": "sha512-Sciaz8eenNTKn9b3t7+xr0ipTp9YxKQY4npwQ3mrRuL0BAVHBLyZxofhaKBAVtzmtRZ/zTyo0/to4B1uWG/Djg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-darwin-x64": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.33.0.tgz",
+      "integrity": "sha512-Z5UPAxzrjlWNNyGy6i65cJzzvgJ5D3T6wMvs+gWpY9d7qRhANrxqAp6LhxIgZhWEw18RfJTGcRxjuLIBr+m8XQ==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-freebsd-x64": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.33.0.tgz",
+      "integrity": "sha512-QQM/Ti/hQajJwCY+RiWuCZ9sdtI/XQk7nDK5vC8kkdwixezOlDgvDx7+RT+QjK6FcFT4MpsuoBnHIo/O3StRRg==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "freebsd"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-linux-arm-gnueabihf": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.33.0.tgz",
+      "integrity": "sha512-N7FVBe6iS24MlM6R/4RBTxGhQheZGs7tiQ9U32UtF75NzP5Q7xWPRqLBCKxlRQRk3rY1jCIPLzx7WzOhuUIRLQ==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-linux-arm64-gnu": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.33.0.tgz",
+      "integrity": "sha512-j2v/itmy4HlNxlc6voKXYgBqNi0Ng2LShg4z7GufpEgs05P+2suBVyi9I6YHq5uoVFx9ETin3eCEhLVyXGQnKg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "libc": [
+        "glibc"
+      ],
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-linux-arm64-musl": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.33.0.tgz",
+      "integrity": "sha512-yiO5ROMuYQgXbC60yjZU5CYSFZGKXL0HFATXt9mHJn1+zW55oCtMI9NfcVhYLMFDL7gV7oBPon/EmMMGg2OvtQ==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "libc": [
+        "musl"
+      ],
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-linux-x64-gnu": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.33.0.tgz",
+      "integrity": "sha512-ar+Ju7LmcN0Jo4FpL4hpFybwNG9/3A/Br5KW2n2jyODg3MEZXaDYADdemoNS+BDNfMgKvylJLj4S5tyRActuAg==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "libc": [
+        "glibc"
+      ],
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-linux-x64-musl": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.33.0.tgz",
+      "integrity": "sha512-RYiYbkokw0trfKqqzfF55lginwEPrD3OJDfTuJzFs1MK6iFnDenaz1fqLLtX4ITG3OktJQXOeTaw1awrBAlZPw==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "libc": [
+        "musl"
+      ],
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-win32-arm64-msvc": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.33.0.tgz",
+      "integrity": "sha512-1K+MPfLSFVpphzpdbfkhlWk6wBrTObBzS2T6db10PNOZgR9GoVsAWzwNyuhUYYbTp23j+4RrncfujZ4uAzXvwA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/lightningcss-win32-x64-msvc": {
+      "version": "1.33.0",
+      "resolved": "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz",
+      "integrity": "sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MPL-2.0",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": ">= 12.0.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/parcel"
+      }
+    },
+    "node_modules/nanoid": {
+      "version": "3.3.19",
+      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.19.tgz",
+      "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "MIT",
+      "bin": {
+        "nanoid": "bin/nanoid.cjs"
+      },
+      "engines": {
+        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
+      }
+    },
+    "node_modules/picocolors": {
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/picomatch": {
+      "version": "4.0.7",
+      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+      "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=12"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/jonschlinkert"
+      }
+    },
+    "node_modules/postcss": {
+      "version": "8.5.28",
+      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz",
+      "integrity": "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/postcss/"
+        },
+        {
+          "type": "tidelift",
+          "url": "https://tidelift.com/funding/github/npm/postcss"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "nanoid": "^3.3.18",
+        "picocolors": "^1.1.1",
+        "source-map-js": "^1.2.1"
+      },
+      "engines": {
+        "node": "^10 || ^12 || >=14"
+      }
+    },
+    "node_modules/rolldown": {
+      "version": "1.2.11",
+      "resolved": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.11.tgz",
+      "integrity": "sha512-qpSwIyz0jHQq5qXBTNxFmE6664rJ7O+4TvPFOiOaBSrz8IOHc1koKKSqTM2H6u1UG1+TveuC6vaDHKXFOvb1Kw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@oxc-project/types": "=0.151.0",
+        "@rolldown/pluginutils": "^1.0.0"
+      },
+      "bin": {
+        "rolldown": "bin/cli.mjs"
+      },
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "optionalDependencies": {
+        "@rolldown/binding-android-arm-eabi": "1.2.11",
+        "@rolldown/binding-android-arm64": "1.2.11",
+        "@rolldown/binding-darwin-arm64": "1.2.11",
+        "@rolldown/binding-darwin-x64": "1.2.11",
+        "@rolldown/binding-freebsd-x64": "1.2.11",
+        "@rolldown/binding-linux-arm-gnueabihf": "1.2.11",
+        "@rolldown/binding-linux-arm64-gnu": "1.2.11",
+        "@rolldown/binding-linux-arm64-musl": "1.2.11",
+        "@rolldown/binding-linux-ppc64-gnu": "1.2.11",
+        "@rolldown/binding-linux-s390x-gnu": "1.2.11",
+        "@rolldown/binding-linux-x64-gnu": "1.2.11",
+        "@rolldown/binding-linux-x64-musl": "1.2.11",
+        "@rolldown/binding-openharmony-arm64": "1.2.11",
+        "@rolldown/binding-win32-arm64-msvc": "1.2.11",
+        "@rolldown/binding-win32-x64-msvc": "1.2.11"
+      }
+    },
+    "node_modules/source-map-js": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
+      "dev": true,
+      "license": "BSD-3-Clause",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/tinyglobby": {
+      "version": "0.2.17",
+      "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
+      "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "fdir": "^6.5.0",
+        "picomatch": "^4.0.4"
+      },
+      "engines": {
+        "node": ">=12.0.0"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/SuperchupuDev"
+      }
+    },
+    "node_modules/vite": {
+      "version": "8.3.1",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-8.3.1.tgz",
+      "integrity": "sha512-/bvH9E9tmCXRGp2uXY3WbOldqpTwFkbha/8ANaEQ6VkxhH60KyqLwgZq6lG2y+4uT55x9+9eUHMpQ7uGnOCKjA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "lightningcss": "^1.33.0",
+        "picomatch": "^4.0.7",
+        "postcss": "^8.5.28",
+        "rolldown": "~1.2.9",
+        "tinyglobby": "^0.2.17"
+      },
+      "bin": {
+        "vite": "bin/vite.js"
+      },
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "funding": {
+        "url": "https://github.com/vitejs/vite?sponsor=1"
+      },
+      "optionalDependencies": {
+        "fsevents": "~2.3.3"
+      },
+      "peerDependencies": {
+        "@types/node": "^20.19.0 || >=22.12.0",
+        "@vitejs/devtools": "^0.7.1",
+        "esbuild": "^0.27.0 || ^0.28.0",
+        "jiti": ">=1.21.0",
+        "less": "^4.0.0",
+        "sass": "^1.70.0",
+        "sass-embedded": "^1.70.0",
+        "stylus": ">=0.54.8",
+        "sugarss": "^5.0.0",
+        "terser": "^5.16.0",
+        "tsx": "^4.8.1",
+        "yaml": "^2.4.2"
+      },
+      "peerDependenciesMeta": {
+        "@types/node": {
+          "optional": true
+        },
+        "@vitejs/devtools": {
+          "optional": true
+        },
+        "esbuild": {
+          "optional": true
+        },
+        "jiti": {
+          "optional": true
+        },
+        "less": {
+          "optional": true
+        },
+        "sass": {
+          "optional": true
+        },
+        "sass-embedded": {
+          "optional": true
+        },
+        "stylus": {
+          "optional": true
+        },
+        "sugarss": {
+          "optional": true
+        },
+        "terser": {
+          "optional": true
+        },
+        "tsx": {
+          "optional": true
+        },
+        "yaml": {
+          "optional": true
+        }
+      }
+    }
+  }
+}
+
+
+===== package.json =====
+{
+  "name": "abrigo-escola",
+  "version": "1.0.0",
+  "description": "Site institucional (SPA) para o Projeto Abrigo Escola, ONG de proteÃ§Ã£o animal sediada em SÃ£o JosÃ© dos Campos (SP). Apresenta a missÃ£o da instituiÃ§Ã£o, seus projetos de voluntariado/doaÃ§Ã£o e um formulÃ¡rio de cadastro para novos voluntÃ¡rios e doadores.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite", "build": "vite build", "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendinha-dev/abrigo-escola.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/brendinha-dev/abrigo-escola/issues"
+  },
+  "homepage": "https://github.com/brendinha-dev/abrigo-escola#readme",
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}
+
