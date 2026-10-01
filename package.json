@@ -1,0 +1,24 @@
+{
+  "name": "abrigo-escola",
+  "version": "1.0.0",
+  "description": "Site institucional (SPA) para o Projeto Abrigo Escola, ONG de proteção animal sediada em São José dos Campos (SP). Apresenta a missão da instituição, seus projetos de voluntariado/doação e um formulário de cadastro para novos voluntários e doadores.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite", "build": "vite build", "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendinha-dev/abrigo-escola.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/brendinha-dev/abrigo-escola/issues"
+  },
+  "homepage": "https://github.com/brendinha-dev/abrigo-escola#readme",
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}

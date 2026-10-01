@@ -5,7 +5,12 @@ export function templateInicio() {
         <section id="apresentacao" class="col-12">
           <h1>Instituto Esdras Andrade — Projeto Abrigo Escola</h1>
           <p>Somos uma organização não governamental sediada em São José dos Campos (SP), dedicada ao resgate, cuidado e reabilitação de cães e gatos vítimas de abandono e maus-tratos. Hoje, abrigamos centenas de animais em busca de um novo lar cheio de amor e dignidade.</p>
-          <img src="../img/equipe-voluntarios.jpeg" alt="Voluntários cuidando de cães e gatos resgatados no abrigo" width="600">
+          <picture>
+           <source srcset="../img/equipe-voluntarios.webp" type="image/webp">
+           <img src="../img/equipe-voluntarios.jpeg" 
+           alt="Voluntários cuidando de cães e gatos resgatados no abrigo" 
+           width="600" loading="lazy">
+          </picture>
         </section>
 
         <section id="missao" class="col-6">
@@ -82,25 +87,34 @@ export function templateCadastro() {
         <fieldset>
           <legend>Dados Pessoais</legend>
           <label for="nome">Nome completo:</label>
-          <input type="text" id="nome" name="nome" placeholder="Digite aqui" required>
+          <input type="text" id="nome" name="nome" placeholder="Digite aqui"
+                 aria-required="true" aria-describedby="nome-erro" required>
 
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" placeholder="Digite aqui" required>
+          <input type="email" id="email" name="email" placeholder="Digite aqui"
+                 aria-required="true" aria-describedby="email-erro" required>
 
           <label for="nascimento">Data de nascimento:</label>
-          <input type="date" id="nascimento" name="nascimento" required>
+          <input type="date" id="nascimento" name="nascimento"
+                 aria-required="true" required>
 
           <label for="cpf">CPF:</label>
-          <input type="text" id="cpf" name="cpf" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}" placeholder="000.000.000-00" title="Formato: 000.000.000-00" required>
+          <input type="text" id="cpf" name="cpf" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}"
+                 placeholder="000.000.000-00" title="Formato: 000.000.000-00"
+                 aria-required="true" aria-describedby="cpf-erro" required>
 
           <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" name="telefone" pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}" placeholder="(00) 00000-0000" title="Formato: (00) 00000-0000" required>
+          <input type="tel" id="telefone" name="telefone" pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}"
+                 placeholder="(00) 00000-0000" title="Formato: (00) 00000-0000"
+                 aria-required="true" aria-describedby="telefone-erro" required>
         </fieldset>
 
         <fieldset>
           <legend>Endereço</legend>
           <label for="cep">CEP:</label>
-          <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}" placeholder="00000-000" title="Formato: 00000-000" required>
+          <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}"
+                 placeholder="00000-000" title="Formato: 00000-000"
+                 aria-required="true" aria-describedby="cep-erro" required>
 
           <label for="cidade">Cidade:</label>
           <input type="text" id="cidade" name="cidade" placeholder="Digite aqui" required>
